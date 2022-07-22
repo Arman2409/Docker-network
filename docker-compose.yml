@@ -1,0 +1,18 @@
+version: '3.8'
+services: 
+  backend:
+    container_name: backend-container
+    restart: always
+    build: ./backend
+    ports: 
+      - "3001:3001"
+    environment:
+      - MONGODB_URL=mongodb+srv://Ghazaryan2409:AR122333@cluster0.jh3pp.mongodb.net/OnGrid
+      - SESSION_SECRET=some secrets
+      - PORT=3001
+  frontend:
+    container_name: frontend-container
+    restart: always
+    build: ./frontend
+    ports: 
+      - "3000:3000"
