@@ -30,6 +30,9 @@ app.use((req,res,next) => {
     logger.info(req.method + ' ' + req.path);
     next();
 })
+
+// serving frontend by backend 
+
 // app.use(express.static(path.join(path.resolve(),'/frontend/build/')));
 // app.get('*', (req,res) => {
 //     res.sendFile(path.join(path.resolve(),'/frontend/build/index.html'));
@@ -45,4 +48,4 @@ app.get('/api/logOut', logOut);
 const port = normalizePort(process.env.PORT || 3001);
 app.listen(port, () => {
     logger.info(`Server running on port ${port}`);
-})
+});

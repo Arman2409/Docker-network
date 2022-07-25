@@ -1,23 +1,16 @@
 version: '3.8'
 services: 
   backend:
-    container_name: backend
-    restart: always
-    build: ./backend
-    ports: 
-      - "3001:3001"
+    restart: on-failure
+    build: ./backend      
     environment:
       - MONGODB_URL=mongodb+srv://Ghazaryan2409:AR122333@cluster0.jh3pp.mongodb.net/OnGrid
       - SESSION_SECRET=some secrets
       - PORT=3001
   frontend:
-    container_name: frontend
-    restart: always
+    restart: on-failure
     build: ./frontend
-    ports: 
-      - "3000:3000"
   nginx:
-   container_name: nginx
    image: nginx:1.17.10
    depends_on:
     - frontend

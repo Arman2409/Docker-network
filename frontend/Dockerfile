@@ -1,19 +1,23 @@
-FROM node
+FROM node:16.16 as front
 
-#Create app directory
 WORKDIR '/frontend'
 
 COPY 'package*.json' '/frontend/'
 
-RUN npm install
-
 RUN ls -all
 
-RUN npm install
+RUN npm install --silent
+
+RUN npm install react-scripts@3.0.1 -g --silent 
 
 COPY . .
 
 RUN npm run build
 
+FROM nginx:1.17.10
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=front /frontend/build /usr/share/nginx/html
+
 EXPOSE 3000
-CMD [ "npm", "start"]
