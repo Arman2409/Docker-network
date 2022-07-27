@@ -4,7 +4,6 @@ import normalizePort from 'normalize-port';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import path from 'path';
 
 import logger from './tools/logger.js';
 
@@ -45,7 +44,7 @@ app.get('/api/signIn',logIn);
 app.get('/api/getResult', getResult);
 app.get('/api/logOut', logOut);
 
-const port = normalizePort(process.env.PORT || 3001);
+const port = normalizePort(process.env.PORT);
 app.listen(port, () => {
     logger.info(`Server running on port ${port}`);
 });

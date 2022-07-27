@@ -1,23 +1,19 @@
-FROM node:16.16 as front
+FROM node:16 AS production
 
-WORKDIR '/frontend'
+WORKDIR /app
 
-COPY 'package*.json' '/frontend/'
+ENV PATH /app/node_modules/.bin:$PATH
 
-RUN ls -all
+COPY package.json package-lock.json ./
 
-RUN npm install --silent
-
-RUN npm install react-scripts@3.0.1 -g --silent 
+RUN npm install
 
 COPY . .
 
 RUN npm run build
 
-FROM nginx:1.17.10
+FROM nginx
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY --from=front /frontend/build /usr/share/nginx/html
-
-EXPOSE 3000
+COPY --from=production /app/build /usr/share/nginx/html
