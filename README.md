@@ -11,4 +11,9 @@ And after that run these commands
 > docker-compose up
 
 Then you can visit the site by following link https://arman.testz.xyz/mainPage
+
+Email and password for this database are
+
+user@email.com
+password1
  
