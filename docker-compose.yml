@@ -18,6 +18,6 @@ services:
   backend:
     build: ./backend/
     environment:
-      - MONGODB_URL=mongodb+srv://Ghazaryan2409:AR122333@cluster0.jh3pp.mongodb.net/OnGrid
-      - SESSION_SECRET=some secrets
-      - PORT=80
+      - MONGODB_URL=...
+      - SESSION_SECRET=...
+      - PORT=...
