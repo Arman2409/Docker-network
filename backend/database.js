@@ -11,13 +11,15 @@ const options = {
 }; 
 
 async function connect(){
-  await mongoose.connect(process.env.MONGODB_URL,options).then((res,err) => {
-     if(res){
-         logger.info(`Databe connected to ${process.env.MONGODB_URL}`)
-     }
-     }).catch((err) => {
-    logger.error(err)
-    })
+  setTimeout(async () => {
+    await mongoose.connect(process.env.MONGODB_URL,options).then((res,err) => {
+        if(res){
+            logger.info(`Databe connected to ${process.env.MONGODB_URL}`)
+        }
+        }).catch((err) => {
+       logger.error(err)
+       });
+  }, 1000)
 }
 
 connect()

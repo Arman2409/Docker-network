@@ -8,6 +8,8 @@ import bodyParser from 'body-parser';
 import logger from './tools/logger.js';
 
 // controllers 
+import initialConfiguration from './initial.js';
+
 import authenticate from './controllers/authenticate.js';
 import logIn from './controllers/signIn.js';
 import getResult from './controllers/getResult.js';
@@ -37,7 +39,11 @@ app.use((req,res,next) => {
 //     res.sendFile(path.join(path.resolve(),'/frontend/build/index.html'));
 // })
 
+// Inintial database configuration 
+
+
 // routes
+initialConfiguration();
 
 app.get('/api/isAuthenticated', authenticate);
 app.get('/api/signIn',logIn);

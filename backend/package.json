@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "homepage": ".",
-  "proxy":"https://arman.testz.xyz:443",
   "scripts": {
     "start": "node index.js"
   },

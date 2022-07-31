@@ -7,6 +7,7 @@ services:
     build: ./ingress/
     ports:
       - "443:443"
+      - '90:90'
     image: ingress
     volumes:
       - /ssl/:/ssl/
@@ -18,6 +19,26 @@ services:
   backend:
     build: ./backend/
     environment:
-      - MONGODB_URL=...
-      - SESSION_SECRET=...
-      - PORT=...
+      # - MONGODB_URL=mongodb+srv://Ghazaryan2409:AR122333@cluster0.jh3pp.mongodb.net/OnGrid
+      - MONGODB_URL=........
+      - SESSION_SECRET=.......
+      - PORT=.....
+    depends_on:
+      - database
+    # ports:
+    #  - "3001:3001" 
+    # networks:
+    #  - appNetwork
+
+  database:
+    image: mongo:4.4
+    volumes: 
+     - db/:/data/db
+    # ports:
+    # - '27017:27017'
+volumes: 
+   db:  
+# networks:
+#   appNetwork:
+#     driver: bridge
+   

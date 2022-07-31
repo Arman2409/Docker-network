@@ -6,10 +6,10 @@ The project is a Docker network, which has to be built up with docker-compose an
 First of all you will need all neccesarry tools dowloaded like **code editor**, **docker**, **docker-compose**.
 
 ###### Adding environment variables
-Before to run the project locally you need to configure environment variables in the docker-compose.yml file.There are three variables ***SESSION_SECRET***,***PORT***,***MONGODB_URL***.SESSION_SECRET variable can be of any value and PORT variable should have the value of 3001.Note that if you are not using docker and run them seperately, you will need to add .env file in /backend and add variables there.
+Before to run the project locally you need to configure environment variables in the docker-compose.yml file.There are three variables ***SESSION_SECRET***,***PORT***,***MONGODB_URL***.SESSION_SECRET variable can be of any value,***MONGODB_URL*** has to be value of  mongodb://database:27017/onGrid and PORT variable should have the value of 3001.Note that if you are not using docker and run them seperately, you will need to add .env file in /backend and add variables there.
 
-###### Populating your database
-***MONGODB_URL*** variable is for the Mongodb database address.If you are using your own database, your database should have collections named 'users' and 'results', where 'users' should have a document with 'email' and 'password' properties, where password should be hashed by module 'bcrypt'.If you want to use the current email and password then they are user@email.com as email and as password $2b$10$iKvuotyrjX4oZXel7eDjYu8CPR6qS.5o0qXMrkTFFY7k3G4gKpK1e for password.Also the 'results' collection should have a document with 'email' property to find the user and 'result' property for exam score.  You can also make manual changes from /controllers/signIn controller if you can't provide hashed password or just skip all database parts if both variants are unavailable.
+###### Populating your database with initial values
+To have initial values in your database you have to add them in /backend/initial.js file from where server inserts initial values to database.In order to have initial user you should add document with 'email' and 'password' properties using the UserModel, where password should be hashed by module 'bcrypt'.You can use use the current email and password then they are user@email.com as email and as password $2b$10$iKvuotyrjX4oZXel7eDjYu8CPR6qS.5o0qXMrkTFFY7k3G4gKpK1e for password.Also the 'results' collection should have a document with 'email' property to find the user and 'result' property for exam score, which is inserted by ResultModel.  You can also make manual changes from /controllers/signIn controller if you can't provide hashed password or just skip all database parts if both variants are unavailable.
 
 ###### Hostname
 You will need your own hostname to host the application and export it along with other locl variables like this.
@@ -33,5 +33,5 @@ And after that run these commands
 
 # Live demo
 .
-You can visit the site by following link https://arman.testz.xyz/mainPage. The email and the password are ***user@email.com*** and ***password1***.
+You can visit the site by following link https://arman.testz.xyz/. The email and the password are ***user@email.com*** and ***password1***.
  
