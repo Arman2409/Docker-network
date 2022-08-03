@@ -6,7 +6,11 @@ import logger from '../tools/logger.js';
 async function logIn ( req,res) {
     const {email, password} = req.query;
     await UserModel.findOne({email:email}, function (err, cursor) {
-      if (err ) logger.error(`${err}`);
+      if (err ) {
+         logger.error(`${err}`);
+         res.status(502).send('Database connection error').end();
+         return;
+      }
       if (cursor) {
             bcrypt.compare(password, cursor.password, (err, response) => {
                if (err) {
@@ -27,7 +31,6 @@ async function logIn ( req,res) {
          }
      }).clone().catch(function(err){ 
         logger.error(err);
-        res.status(500).end();
     });
 }
 

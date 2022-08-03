@@ -6,8 +6,8 @@ const initialConfiguration = async () => {
 
     const newUser = new UserModel(
         {
-        "email":"........",
-        "password":".........."
+        "email":"user@email.com",
+        "password":"$2b$10$iKvuotyrjX4oZXel7eDjYu8CPR6qS.5o0qXMrkTFFY7k3G4gKpK1e"
         }
     )
     newUser.save((err, result) => {
@@ -20,8 +20,8 @@ const initialConfiguration = async () => {
 
     
     const newResult = new ResultModel({
-        "email":"....",
-        "result":"......."
+        "email":"user@email.com",
+        "result":"8"
     });
 
     newResult.save((err,result) => {

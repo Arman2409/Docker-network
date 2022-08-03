@@ -17,7 +17,7 @@ async function getResult(req, res) {
           }
       }).clone().catch(function(err){ logger.error(err)});
     } else {
-      res.status(401).send('Not Authorized, Error Occured');
+      res.status(401).send('Not Authorized, Error Occured').end();
       logger.error('Not Authorized To Get Result')
     }
 }
